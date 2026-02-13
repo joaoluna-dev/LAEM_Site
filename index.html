@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAEM - Liga Acadêmica de Estudos Moleculares</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carousel.css">
 </head>
 <body>
 
@@ -47,9 +48,22 @@
                 <p data-i18n="section_about_text">
                     A Liga Acadêmica de Estudos Moleculares (LAEM) é uma organização acadêmica dinâmica e inovadora, vinculada à Universidade Federal de Pernambuco (UFPE), que se dedica a aprofundar e disseminar o conhecimento nas áreas de genética, bioquímica e biologia molecular. Nosso propósito é construir uma ponte sólida entre a teoria universitária e a prática cotidiana, promovendo a integração essencial entre o ensino, a pesquisa e a extensão. Com um forte compromisso social, trabalhamos para levar o conhecimento científico de ponta, produzido dentro dos muros da universidade, diretamente para a comunidade escolar e a sociedade em geral, utilizando uma linguagem acessível, prática e engajadora.
                 </p>
-                <!-- Placeholder para o carrossel de imagens -->
-                <div class="image-carousel-placeholder">
-                    <p><i data-i18n="carousel_placeholder">Carrossel de imagens da liga em breve.</i></p>
+                <!-- Carousel de imagens -->
+                <div class="carousel-wrapper">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track" id="carousel-track">
+                            <!-- Imagens serão inseridas via JavaScript -->
+                        </ul>
+                    </div>
+                    <button class="carousel-button carousel-button--left" id="carousel-prev">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-button carousel-button--right" id="carousel-next">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    <div class="carousel-nav" id="carousel-nav">
+                        <!-- Dots serão inseridos via JavaScript -->
+                    </div>
                 </div>
             </div>
         </section>

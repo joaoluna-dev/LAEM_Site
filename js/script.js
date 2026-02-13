@@ -29,9 +29,173 @@ document.addEventListener('DOMContentLoaded', function() {
         // Load Dynamic Content
         loadEvents();
         loadMembers();
+        loadCarousel();
 
         // Smooth Scroll
         setupSmoothScroll();
+    }
+
+    // --- Carousel Logic ---
+    function loadCarousel() {
+        const track = document.querySelector('.carousel-track');
+        const container = document.querySelector('.carousel-track-container');
+        const nextButton = document.querySelector('#carousel-next');
+        const prevButton = document.querySelector('#carousel-prev');
+        const dotsNav = document.querySelector('.carousel-nav');
+
+        if (!track || !container) return;
+
+        fetch('data/presentation_images.json')
+            .then(response => response.json())
+            .then(images => {
+                if (!images || images.length === 0) {
+                    container.innerHTML = '<p style="text-align:center; padding: 20px;">Nenhuma imagem disponível.</p>';
+                    return;
+                }
+
+                // Create slides
+                images.forEach((image, index) => {
+                    const slide = document.createElement('li');
+                    slide.classList.add('carousel-slide');
+                    if (index === 0) slide.classList.add('current-slide');
+                    
+                    const img = document.createElement('img');
+                    img.src = `images/presentation/${image}`;
+                    img.alt = `Imagem de apresentação ${index + 1}`;
+                    img.classList.add('carousel-image');
+                    
+                    slide.appendChild(img);
+                    track.appendChild(slide);
+
+                    // Create dot
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-indicator');
+                    if (index === 0) dot.classList.add('current-slide');
+                    
+                    if (dotsNav) dotsNav.appendChild(dot);
+                });
+
+                const slides = Array.from(track.children);
+                const dots = dotsNav ? Array.from(dotsNav.children) : [];
+                let currentIndex = 0;
+
+                // Positioning logic
+                const updateSlidePosition = () => {
+                    const currentSlide = slides[currentIndex];
+                    const slideRect = currentSlide.getBoundingClientRect();
+                    const trackRect = track.getBoundingClientRect();
+                    const containerRect = container.getBoundingClientRect();
+                    
+                    const slideWidth = slideRect.width;
+                    const containerWidth = containerRect.width;
+                    
+                    // Calculate slide position relative to the track's start
+                    // This creates a precise float value invariant of current transform
+                    const relativeSlideLeft = slideRect.left - trackRect.left;
+                    
+                    // Center the active slide
+                    const targetTranslateX = (containerWidth / 2) - (relativeSlideLeft + slideWidth / 2);
+                    
+                    track.style.transform = `translateX(${targetTranslateX}px)`;
+
+                    // Update classes for blur/scale effect
+                    slides.forEach((slide, index) => {
+                        if (index === currentIndex) {
+                            slide.classList.add('current-slide');
+                            slide.style.opacity = '1';
+                            slide.style.transform = 'scale(1)';
+                            slide.style.filter = 'blur(0)';
+                            slide.style.zIndex = '10';
+                        } else {
+                            slide.classList.remove('current-slide');
+                            slide.style.opacity = '0.5';
+                            slide.style.transform = 'scale(0.8)';
+                            slide.style.filter = 'blur(3px)';
+                            slide.style.zIndex = '1';
+                        }
+                    });
+
+                    // Update dots
+                    if (dots.length > 0) {
+                         dots.forEach(dot => dot.classList.remove('current-slide'));
+                         dots[currentIndex].classList.add('current-slide');
+                    }
+                };
+
+                // Initial positioning
+                // Use setTimeout to allow DOM to render and calculate widths correctly
+                setTimeout(updateSlidePosition, 100);
+                window.addEventListener('resize', updateSlidePosition);
+
+                // Navigation
+                const moveToNextSlide = () => {
+                    currentIndex++;
+                    if (currentIndex >= slides.length) {
+                        currentIndex = 0;
+                    }
+                    updateSlidePosition();
+                };
+
+                const moveToPrevSlide = () => {
+                    currentIndex--;
+                    if (currentIndex < 0) {
+                        currentIndex = slides.length - 1;
+                    }
+                    updateSlidePosition();
+                };
+
+                if (nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        moveToNextSlide();
+                        stopAutoPlay();
+                        startAutoPlay();
+                    });
+                }
+
+                if (prevButton) {
+                    prevButton.addEventListener('click', () => {
+                        moveToPrevSlide();
+                        stopAutoPlay();
+                        startAutoPlay();
+                    });
+                }
+
+                // Dots navigation helper
+                // (Already handled in loop above by setting currentIndex and calling updateSlidePosition)
+                // We need to link the dot click to currentIndex
+                if (dotsNav) {
+                    dots.forEach((dot, index) => {
+                        dot.addEventListener('click', () => {
+                            currentIndex = index;
+                            updateSlidePosition();
+                            stopAutoPlay();
+                            startAutoPlay();
+                        });
+                    });
+                }
+
+                // Auto Play
+                let autoPlayInterval;
+                const startAutoPlay = () => {
+                    stopAutoPlay(); // Ensure no duplicates
+                    autoPlayInterval = setInterval(moveToNextSlide, 10000); // 10s
+                };
+
+                const stopAutoPlay = () => {
+                    clearInterval(autoPlayInterval);
+                };
+
+                startAutoPlay();
+
+                // Pause on hover
+                container.addEventListener('mouseenter', stopAutoPlay);
+                container.addEventListener('mouseleave', startAutoPlay);
+
+            })
+            .catch(error => {
+                console.error('Error loading carousel images:', error);
+                container.innerHTML = '<p style="text-align:center; padding: 20px;">Erro ao carregar imagens.</p>';
+            });
     }
 
     // Expose changeLanguage to global scope
