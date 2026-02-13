@@ -31,8 +31,33 @@ document.addEventListener('DOMContentLoaded', function() {
         loadMembers();
         loadCarousel();
 
+        // Mobile Menu
+        setupMobileMenu();
+
         // Smooth Scroll
         setupSmoothScroll();
+    }
+
+    // --- Mobile Menu Logic ---
+    function setupMobileMenu() {
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('.main-nav');
+        const navLinks = document.querySelectorAll('.main-nav a');
+
+        if (menuBtn && nav) {
+            menuBtn.addEventListener('click', () => {
+                menuBtn.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuBtn.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+        }
     }
 
     // --- Carousel Logic ---

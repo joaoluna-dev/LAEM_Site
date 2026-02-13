@@ -63,6 +63,39 @@ body {
     width: auto;
 }
 
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--carmin-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation state */
+.mobile-menu-btn.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -319,4 +352,120 @@ body {
 .flag-icon:hover, .flag-icon.active {
     transform: scale(1.1);
     opacity: 1;
+}
+
+/* --- Media Queries for Responsive Design --- */
+
+@media (max-width: 992px) {
+    .main-header {
+        padding: 15px 3%;
+    }
+    
+    .hero-section h1 {
+        font-size: 60px;
+    }
+    
+    .content-section h2 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--white-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s ease-in-out;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding-top: 60px; /* Space for close interaction if needed */
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .main-nav a {
+        font-size: 20px;
+    }
+    
+    .language-selector {
+        /* On mobile, maybe move it inside the nav or keep it in header but smaller */
+        margin-left: auto; /* Push to right before menu btn */
+        margin-right: 15px;
+    }
+
+    /* Hero */
+    .hero-section {
+        height: auto;
+        padding: 100px 5%;
+    }
+    
+    .hero-section h1 {
+        font-size: 45px;
+    }
+
+    /* Content & Layout */
+    .content-section {
+        padding: 60px 5%;
+    }
+    
+    .card {
+        width: 100%; /* Full width on mobile */
+        max-width: 400px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .logo-container .logo {
+        height: 40px; /* Smaller logo */
+    }
+    
+    .member-filters {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .filter-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 36px;
+    }
+    
+    .content-section h2 {
+        font-size: 32px;
+    }
+    
+    .language-selector {
+        gap: 10px;
+    }
+    
+    .flag-icon {
+        width: 25px;
+    }
 }
