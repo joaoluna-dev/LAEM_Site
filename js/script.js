@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!events || events.length === 0) {
             if (translations[currentLang]) {
-                eventContainer.innerHTML = `<p>${translations[currentLang].msg_no_events}</p>`;
+                eventContainer.innerHTML = `<p class="no-events-msg">${translations[currentLang].msg_no_events}</p>`;
             }
             return;
         }

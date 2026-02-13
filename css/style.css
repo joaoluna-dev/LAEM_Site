@@ -354,6 +354,19 @@ body {
     opacity: 1;
 }
 
+/* No Events Message */
+.no-events-msg {
+    font-size: 18px;
+    color: var(--carmin-apagado-color);
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px dashed var(--disabled-color);
+    border-radius: 8px;
+    background-color: var(--bg-light-color);
+}
+
 /* --- Media Queries for Responsive Design --- */
 
 @media (max-width: 992px) {

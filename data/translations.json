@@ -31,7 +31,7 @@
         "btn_subscribe": "Inscreva-se",
         "btn_closed": "Inscrições Encerradas",
         "msg_error_events": "Erro ao carregar os eventos. Tente novamente mais tarde.",
-        "msg_no_events": "Nenhum evento programado no momento.",
+        "msg_no_events": "A liga não está sediando eventos no momento. Por favor, verifique posteriormente para novas oportunidades.",
         "msg_error_members": "Erro ao carregar os membros.",
         "msg_no_members": "Nenhum membro encontrado para esta categoria."
     },
@@ -67,7 +67,7 @@
         "btn_subscribe": "Subscribe",
         "btn_closed": "Registration Closed",
         "msg_error_events": "Error loading events. Please try again later.",
-        "msg_no_events": "No events scheduled at the moment.",
+        "msg_no_events": "The league is not hosting events at the moment. Please check back later for new opportunities.",
         "msg_error_members": "Error loading members.",
         "msg_no_members": "No members found for this category."
     },
@@ -103,7 +103,7 @@
         "btn_subscribe": "Inscribirse",
         "btn_closed": "Inscripciones Cerradas",
         "msg_error_events": "Error al cargar los eventos. Inténtelo de nuevo más tarde.",
-        "msg_no_events": "No hay eventos programados en este momento.",
+        "msg_no_events": "La liga no está organizando eventos en este momento. Por favor, verifique más tarde para nuevas oportunidades.",
         "msg_error_members": "Error al cargar los miembros.",
         "msg_no_members": "No se encontraron miembros para esta categoría."
     }
