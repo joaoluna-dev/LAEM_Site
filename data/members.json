@@ -1,0 +1,30 @@
+{
+  "ensino_cientifico": [
+    {
+      "nome": "Placeholder Membro Ensino 1",
+      "lattes": "#"
+    },
+    {
+      "nome": "Placeholder Membro Ensino 2",
+      "lattes": "#"
+    }
+  ],
+  "extensao": [
+    {
+      "nome": "Placeholder Membro Extensão 1",
+      "lattes": "#"
+    }
+  ],
+  "comunicacao": [
+    {
+      "nome": "Placeholder Membro Comunicação 1",
+      "lattes": "#"
+    }
+  ],
+  "presidencia": [
+    {
+        "nome": "Placeholder Membro Presidência 1",
+        "lattes": "#"
+    }
+  ]
+}

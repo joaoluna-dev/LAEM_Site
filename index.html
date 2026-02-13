@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAEM - Liga Acadêmica de Estudos Moleculares</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <a href="#inicio">
+                <img src="images/logo/logo_liga.png" alt="Logo da Liga Acadêmica de Estudos Moleculares" class="logo">
+            </a>
+            <a href="https://www.ufpe.br" target="_blank">
+                <img src="images/logo/Logo_ufpe.jpg" alt="Logo da UFPE" class="logo">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#sobre" data-i18n="nav_about">Sobre Nós</a></li>
+                <li><a href="#projetos" data-i18n="nav_projects">Projetos</a></li>
+                <li><a href="#eventos" data-i18n="nav_events">Eventos</a></li>
+                <li><a href="#membros" data-i18n="nav_members">Membros</a></li>
+                <li><a href="#contato" data-i18n="nav_contact">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="language-selector">
+            <img src="images/icons/flag_portuguese.png" alt="Português" class="flag-icon" onclick="changeLanguage('pt')" title="Português">
+            <img src="images/icons/flag_english.png" alt="English" class="flag-icon" onclick="changeLanguage('en')" title="English">
+            <img src="images/icons/flag_spanish.png" alt="Español" class="flag-icon" onclick="changeLanguage('es')" title="Español">
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h1 data-i18n="hero_title">Liga Acadêmica de Estudos Moleculares</h1>
+                <p data-i18n="hero_subtitle">Integrando ensino, pesquisa e extensão para transformar a ciência em ação.</p>
+            </div>
+        </section>
+
+        <section id="sobre" class="content-section">
+            <h2 data-i18n="section_about_title">Sobre Nós</h2>
+            <div class="about-content">
+                <p data-i18n="section_about_text">
+                    A Liga Acadêmica de Estudos Moleculares (LAEM) é uma organização acadêmica dinâmica e inovadora, vinculada à Universidade Federal de Pernambuco (UFPE), que se dedica a aprofundar e disseminar o conhecimento nas áreas de genética, bioquímica e biologia molecular. Nosso propósito é construir uma ponte sólida entre a teoria universitária e a prática cotidiana, promovendo a integração essencial entre o ensino, a pesquisa e a extensão. Com um forte compromisso social, trabalhamos para levar o conhecimento científico de ponta, produzido dentro dos muros da universidade, diretamente para a comunidade escolar e a sociedade em geral, utilizando uma linguagem acessível, prática e engajadora.
+                </p>
+                <!-- Placeholder para o carrossel de imagens -->
+                <div class="image-carousel-placeholder">
+                    <p><i data-i18n="carousel_placeholder">Carrossel de imagens da liga em breve.</i></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="content-section bg-light">
+            <h2 data-i18n="section_projects_title">Projetos de Pesquisa</h2>
+            <div class="card-container">
+                <!-- Cards de projetos -->
+                <div class="card project-card">
+                    <img src="images/logo/logo_molecular_diagnosis.png" alt="Ícone Diagnóstico Molecular" class="card-icon">
+                    <h3 data-i18n="project_diagnosis_title">Diagnóstico Molecular</h3>
+                    <p data-i18n="project_diagnosis_desc">Explorando técnicas avançadas para a identificação precisa de patógenos e doenças em nível molecular.</p>
+                </div>
+                <div class="card project-card">
+                    <img src="images/logo/logo_biomarker.png" alt="Ícone Biomarcadores" class="card-icon">
+                    <h3 data-i18n="project_biomarker_title">Pesquisa de Biomarcadores</h3>
+                    <p data-i18n="project_biomarker_desc">Investigando marcadores biológicos para o desenvolvimento de novos métodos de diagnóstico e prognóstico.</p>
+                </div>
+                <div class="card project-card">
+                    <img src="images/logo/logo_new_therapies.png" alt="Ícone Novas Terapias" class="card-icon">
+                    <h3 data-i18n="project_therapies_title">Novas Terapias</h3>
+                    <p data-i18n="project_therapies_desc">Pesquisando abordagens terapêuticas inovadoras com base em alvos moleculares para o tratamento de doenças.</p>
+                </div>
+                <div class="card project-card">
+                    <img src="images/logo/logo_divulgacao_hpv.png" alt="Ícone Divulgação HPV" class="card-icon">
+                    <h3 data-i18n="project_hpv_title">Divulgação Científica em HPV</h3>
+                    <p data-i18n="project_hpv_desc">Nosso projeto, intitulado "Conceitos da saúde e biologia molecular na conscientização do HPV", busca desmistificar o tema e promover a saúde preventiva por meio de uma abordagem lúdica e dialógica.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="eventos" class="content-section">
+            <h2 data-i18n="section_events_title">Próximos Eventos</h2>
+             <div id="event-container" class="card-container">
+                <!-- Cards de eventos serão inseridos aqui pelo JavaScript -->
+            </div>
+        </section>
+
+        <section id="membros" class="content-section bg-light">
+            <h2 data-i18n="section_members_title">Nossos Membros</h2>
+            <div class="member-filters">
+                <button class="btn filter-btn" data-filter="presidencia" data-i18n="filter_presidency">Presidência</button>
+                <button class="btn filter-btn" data-filter="ensino_cientifico" data-i18n="filter_teaching">Ensino/Científico</button>
+                <button class="btn filter-btn" data-filter="extensao" data-i18n="filter_extension">Extensão</button>
+                <button class="btn filter-btn" data-filter="comunicacao" data-i18n="filter_communication">Comunicação</button>
+            </div>
+            <div id="member-gallery" class="card-container member-gallery">
+                <!-- Cards de membros serão inseridos aqui pelo JavaScript -->
+            </div>
+        </section>
+
+        <section id="contato" class="content-section">
+            <h2 data-i18n="section_contact_title">Contato</h2>
+            <div class="contact-container">
+                <a href="https://www.instagram.com/laemufpe" target="_blank" class="contact-item">
+                    <img src="images/logo/logo_instagram.png" alt="Instagram" class="contact-icon">
+                    <span>@laemufpe</span>
+                </a>
+                <a href="mailto:ufpe.laem@gmail.com" class="contact-item">
+                    <img src="images/logo/logo_email.png" alt="Email" class="contact-icon">
+                    <span>ufpe.laem@gmail.com</span>
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer-bar">
+        <p data-i18n="footer_rights">&copy; 2024 LAEM - Liga Acadêmica de Estudos Moleculares. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
